@@ -11,5 +11,5 @@ def signup():
     return User().signup()
 
 @app.route('/api/v1/user/login/', methods=['POST'])
-def signup():
+def login():
     return User().login()

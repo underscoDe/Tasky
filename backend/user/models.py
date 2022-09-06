@@ -15,6 +15,14 @@ tasky = db['tasky']
 class User:
     """ Defines all User related methods
     """
+    def start_session(self, user):
+        """ Handle User session
+        """
+        del user['password']
+        session['logged_in'] = True
+        session['user'] = user
+        return jsonify(session), 200
+
     def signup(self):
         """ Handle User sign up
         """
@@ -39,7 +47,7 @@ class User:
             return jsonify({ "error": "Username already in use" }), 400
 
         if tasky.insert_one(user):
-            return jsonify(user)
+            return self.start_session(user)
 
         return jsonify({ "error": "Signup failed, retry" }), 400
 
@@ -51,6 +59,6 @@ class User:
         })
 
         if user and pbkdf2_sha256.verify(request.form.get('password'), user['password']):
-            return jsonify(user)
+            return self.start_session(user)
 
         return jsonify({ "error": "Invalid login credentials" }), 401
