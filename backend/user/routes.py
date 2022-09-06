@@ -10,6 +10,7 @@ from user.models import User
 def signup():
     return User().signup()
 
+
 @app.route('/api/v1/user/login/', methods=['POST'])
 def login():
     return User().login()

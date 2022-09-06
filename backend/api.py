@@ -22,6 +22,7 @@ db = cluster[getenv('MONGOBD_DB')]
 # User routes
 from user import routes
 
+
 @app.route('/')
 def home():
     return '<h1>Sign Up</h1>'

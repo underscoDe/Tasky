@@ -39,17 +39,17 @@ class User:
         user['password'] = pbkdf2_sha256.encrypt(user['password'])
 
         # Check for existing email address
-        if tasky.find_one({ "email": user['email'] }):
-            return jsonify({ "error": "Email address already in use" }), 400
+        if tasky.find_one({"email": user['email']}):
+            return jsonify({"error": "Email address already in use"}), 400
 
         # Check for existing username
-        if tasky.find_one({ "username": user['username'] }):
-            return jsonify({ "error": "Username already in use" }), 400
+        if tasky.find_one({"username": user['username']}):
+            return jsonify({"error": "Username already in use"}), 400
 
         if tasky.insert_one(user):
             return self.start_session(user)
 
-        return jsonify({ "error": "Signup failed, retry" }), 400
+        return jsonify({"error": "Signup failed, retry"}), 400
 
     def login(self):
         """ Handle User login
@@ -58,7 +58,8 @@ class User:
             "email": request.form.get('email')
         })
 
-        if user and pbkdf2_sha256.verify(request.form.get('password'), user['password']):
+        if user and pbkdf2_sha256.verify(
+           request.form.get('password'), user['password']):
             return self.start_session(user)
 
-        return jsonify({ "error": "Invalid login credentials" }), 401
+        return jsonify({"error": "Invalid login credentials"}), 401
