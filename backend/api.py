@@ -16,7 +16,15 @@ URI = (f"mongodb+srv://{getenv('MONGODB_USR')}:{getenv('MONGOBD_PWD')}"
        "@cluster0.erimhkb.mongodb.net/?retryWrites=true&w=majority")
 
 cluster = MongoClient(URI)
-db = cluster[getenv('MONGODB_DB')]
+db = cluster[getenv('MONGOBD_DB')]
+
+
+# User routes
+from user import routes
+
+@app.route('/')
+def home():
+    return '<h1>Sign Up</h1>'
 
 
 if __name__ == '__main__':
