@@ -16,6 +16,8 @@ class User:
     """ Defines all User related methods
     """
     def signup(self):
+        """ Handle User sign up
+        """
         # Create the user object
         user = {
             "_id": uuid.uuid4().hex,
@@ -39,4 +41,16 @@ class User:
         if tasky.insert_one(user):
             return jsonify(user)
 
-        return jsonify({ "error": "Signup failed" }), 400
+        return jsonify({ "error": "Signup failed, retry" }), 400
+
+    def login(self):
+        """ Handle User login
+        """
+        user = tasky.find_one({
+            "email": request.form.get('email')
+        })
+
+        if user and pbkdf2_sha256.verify(request.form.get('password'), user['password']):
+            return jsonify(user)
+
+        return jsonify({ "error": "Invalid login credentials" }), 401

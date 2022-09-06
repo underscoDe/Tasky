@@ -9,3 +9,7 @@ from user.models import User
 @app.route('/api/v1/user/signup/', methods=['POST'])
 def signup():
     return User().signup()
+
+@app.route('/api/v1/user/login/', methods=['POST'])
+def signup():
+    return User().login()
