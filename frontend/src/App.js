@@ -1,5 +1,6 @@
 import React from "react";
 import LoginPage from "./layouts/LoginPage";
+import RegisterPage from "./layouts/RegisterPage";
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -9,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={ <LoginPage /> } />
         <Route path="login" element={ <LoginPage /> } />
-        {/* <Route path="register" element={ user ? <Home user={user} /> : <Register /> } /> */}
+        <Route path="register" element={ <RegisterPage /> } />
       </Routes>
     </>
   );
