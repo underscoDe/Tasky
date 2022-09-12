@@ -447,3 +447,49 @@ li a.dropdown-toggle::after {
     left: 68%;
   }
 }
+
+/* ---------------------------------------------------
+    BOARD STYLE
+----------------------------------------------------- */
+.dashboard {
+  position: relative;
+  max-height: 100vh;
+}
+
+.content {
+  overflow: auto;
+}
+
+.card-container {
+  width: 300px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.category-container {
+  padding-top: 1rem;
+}
+
+.category-container:not(:first-child) {
+  margin-top: 1.5rem;
+  border-top: 2px solid #ccc;
+}
+
+.category-container.h {
+  margin-top: 0;
+  border-top: none;
+}
+
+.card-title {
+  border-bottom: 3px solid #f24726;
+}
+
+.task {
+  border: 1px solid #2d9bf0;
+  border-left-width: 5px;
+  border-radius: 5px;
+  text-align: left;
+  word-wrap: break-word;
+  clear: both;
+  white-space: normal;
+}
