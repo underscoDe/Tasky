@@ -475,7 +475,7 @@ li a.dropdown-toggle::after {
   border-top: 2px solid #ccc;
 }
 
-.category-container.h {
+.category-container.first-cat {
   margin-top: 0;
   border-top: none;
 }
