@@ -2,7 +2,6 @@ import React from "react";
 import BoardCard from "./BoardCard";
 
 const Board = ({ boardTitle, cardList }) => {
-  console.log(cardList);
   return (
     <section className="board px-5 pb-5">
       <h3>{boardTitle}</h3>
