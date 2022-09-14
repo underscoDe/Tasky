@@ -35,6 +35,8 @@ export class FormContainer extends Component {
           showModal={this.showModal}
           buttonRef={(n) => (this.TriggerButton = n)}
           triggerText={this.props.triggerText}
+          classes={this.props.classes}
+          tooltipText={this.props.tooltipText}
         />
         {this.state.isShown ? (
           <Modal

@@ -142,10 +142,15 @@ class Content extends Component {
   }
   onSubmit = (event) => {
     event.preventDefault(event);
-    console.log(event.target.title.value);
+    this.setState({
+      boardTitle: event.target.title.value,
+      cards: []
+    })
   };
   render() {
     const triggerText = <FontAwesomeIcon icon={faPlus} />
+    const classes = "collapse-icon"
+    const tooltipText = "Add a new board"
     const renderBoardOrCreateOne = () => {
       if (Object.keys(this.state).length !== 0) {
         return (
@@ -157,7 +162,7 @@ class Content extends Component {
       } else {
         return (
           <section className="px-5 pb-5">
-            <FormContainer triggerText={triggerText} onSubmit={this.onSubmit} />
+            <FormContainer triggerText={triggerText} onSubmit={this.onSubmit} classes={classes} tooltipText={tooltipText} />
           </section>
         );
       }
