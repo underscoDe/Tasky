@@ -10,6 +10,7 @@ export const Modal = ({
   buttonRef,
   closeModal,
   onSubmit,
+  currentForm
 }) => {
   return ReactDOM.createPortal(
     <FocusTrap>
@@ -38,7 +39,7 @@ export const Modal = ({
             </svg>
           </button>
           <div className="modal-body">
-            <Form onSubmit={onSubmit} />
+            <Form onSubmit={onSubmit} currentForm={currentForm}/>
           </div>
         </div>
       </aside>

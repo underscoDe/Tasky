@@ -147,22 +147,35 @@ class Content extends Component {
       cards: []
     })
   };
+
+  addCard = (event) => {
+    event.preventDefault(event);
+    console.log(event.target.title.value)
+  }
+
   render() {
     const triggerText = <FontAwesomeIcon icon={faPlus} />
     const classes = "collapse-icon"
     const tooltipText = "Add a new board"
+    const currentForm = 'ADD_BOARD'
     const renderBoardOrCreateOne = () => {
       if (Object.keys(this.state).length !== 0) {
         return (
           <Board
             boardTitle={this.state.boardTitle}
             cardList={this.state.cards}
+            addCard={this.addCard}
           />
         );
       } else {
         return (
           <section className="px-5 pb-5">
-            <FormContainer triggerText={triggerText} onSubmit={this.onSubmit} classes={classes} tooltipText={tooltipText} />
+            <FormContainer
+              triggerText={triggerText}
+              onSubmit={this.onSubmit}
+              classes={classes}
+              tooltipText={tooltipText}
+              currentForm={currentForm} />
           </section>
         );
       }
