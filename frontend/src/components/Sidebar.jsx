@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
-  faBriefcase,
+  /* faBriefcase,
   faPaperPlane,
   faQuestion,
   faImage,
-  faCopy,
+  faCopy, */
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 /* import SubMenu from "./SubMenu"; */
@@ -39,7 +39,7 @@ class Sidebar extends Component {
           <Nav.Item className="active">
             <Nav.Link href="/">
               <FontAwesomeIcon icon={faHome} className="mr-2" />
-              Home
+              Board
             </Nav.Link>
           </Nav.Item>
 

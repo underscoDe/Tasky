@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import classNames from "classnames";
-import { Container, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import FormContainer from './modals/FormContainer'
 import NavBar from "./DashboardNavbar";
 import Board from "./Board";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,13 +21,11 @@ class Content extends Component {
               tasks: [
                 {
                   content:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit \
-                                      fuga quos ducimus excepturi commodi tempore sequi iusto.",
+                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
                 {
                   content:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit \
-                                      fuga quos ducimus excepturi commodi tempore sequi iusto.",
+                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
               ],
             },
@@ -35,8 +34,7 @@ class Content extends Component {
               tasks: [
                 {
                   content:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit \
-                                      fuga quos ducimus excepturi commodi tempore sequi iusto.",
+                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
               ],
             },
@@ -45,8 +43,7 @@ class Content extends Component {
               tasks: [
                 {
                   content:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit \
-                          fuga quos ducimus excepturi commodi tempore sequi iusto.",
+                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
               ],
             },
@@ -60,8 +57,7 @@ class Content extends Component {
               tasks: [
                 {
                   content:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit \
-                                      fuga quos ducimus excepturi commodi tempore sequi iusto.",
+                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
               ],
             },
@@ -70,8 +66,7 @@ class Content extends Component {
               tasks: [
                 {
                   content:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit \
-                                      fuga quos ducimus excepturi commodi tempore sequi iusto.",
+                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
               ],
             },
@@ -80,8 +75,7 @@ class Content extends Component {
               tasks: [
                 {
                   content:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit \
-                          fuga quos ducimus excepturi commodi tempore sequi iusto.",
+                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
               ],
             },
@@ -95,8 +89,7 @@ class Content extends Component {
               tasks: [
                 {
                   content:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit \
-                                      fuga quos ducimus excepturi commodi tempore sequi iusto.",
+                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
               ],
             },
@@ -105,8 +98,7 @@ class Content extends Component {
               tasks: [
                 {
                   content:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit \
-                                      fuga quos ducimus excepturi commodi tempore sequi iusto.",
+                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
               ],
             },
@@ -115,8 +107,7 @@ class Content extends Component {
               tasks: [
                 {
                   content:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit \
-                          fuga quos ducimus excepturi commodi tempore sequi iusto.",
+                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
               ],
             },
@@ -130,8 +121,7 @@ class Content extends Component {
               tasks: [
                 {
                   content:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit \
-                                        fuga quos ducimus excepturi commodi tempore sequi iusto.",
+                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
               ],
             },
@@ -140,8 +130,7 @@ class Content extends Component {
               tasks: [
                 {
                   content:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit \
-                                        fuga quos ducimus excepturi commodi tempore sequi iusto.",
+                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
               ],
             },
@@ -151,10 +140,14 @@ class Content extends Component {
     };
     this.state = {};
   }
+  onSubmit = (event) => {
+    event.preventDefault(event);
+    console.log(event.target.title.value);
+  };
   render() {
+    const triggerText = <FontAwesomeIcon icon={faPlus} />
     const renderBoardOrCreateOne = () => {
       if (Object.keys(this.state).length !== 0) {
-        console.log("not");
         return (
           <Board
             boardTitle={this.state.boardTitle}
@@ -162,22 +155,9 @@ class Content extends Component {
           />
         );
       } else {
-        const placement = 'right';
         return (
           <section className="px-5 pb-5">
-            <OverlayTrigger
-              key={placement}
-              placement={placement}
-              overlay={
-                <Tooltip id={`tooltip-${placement}`}>Add a new board</Tooltip>
-              }
-            >
-              <Button
-                className="collapse-icon" /* variant="outline-info" */ /* onClick={this.props.toggle} */
-              >
-                <FontAwesomeIcon icon={faPlus} />
-              </Button>
-            </OverlayTrigger>
+            <FormContainer triggerText={triggerText} onSubmit={this.onSubmit} />
           </section>
         );
       }
