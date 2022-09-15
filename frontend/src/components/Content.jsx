@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { v4 as uuidv4 } from 'uuid'
 import classNames from "classnames";
 import { Container } from "react-bootstrap";
 import FormContainer from './modals/FormContainer'
@@ -14,34 +15,42 @@ class Content extends Component {
       boardTitle: "To do board",
       cards: [
         {
+          id: uuidv4(),
           cardTitle: "Category One",
           categories: [
             {
+              id: uuidv4(),
               categoryTitle: "Category title",
               tasks: [
                 {
+                  id: uuidv4(),
                   content:
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
                 {
-                  content:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
-                },
-              ],
-            },
-            {
-              categoryTitle: "Category title",
-              tasks: [
-                {
+                  id: uuidv4(),
                   content:
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
               ],
             },
             {
+              id: uuidv4(),
               categoryTitle: "Category title",
               tasks: [
                 {
+                  id: uuidv4(),
+                  content:
+                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
+                },
+              ],
+            },
+            {
+              id: uuidv4(),
+              categoryTitle: "Category title",
+              tasks: [
+                {
+                  id: uuidv4(),
                   content:
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
@@ -50,30 +59,37 @@ class Content extends Component {
           ],
         },
         {
+          id: uuidv4(),
           cardTitle: "Category Two",
           categories: [
             {
+              id: uuidv4(),
               categoryTitle: "Category title",
               tasks: [
                 {
+                  id: uuidv4(),
                   content:
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
               ],
             },
             {
+              id: uuidv4(),
               categoryTitle: "Category title",
               tasks: [
                 {
+                  id: uuidv4(),
                   content:
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
               ],
             },
             {
+              id: uuidv4(),
               categoryTitle: "Category title",
               tasks: [
                 {
+                  id: uuidv4(),
                   content:
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
@@ -82,30 +98,37 @@ class Content extends Component {
           ],
         },
         {
+          id: uuidv4(),
           cardTitle: "Category Three",
           categories: [
             {
+              id: uuidv4(),
               categoryTitle: "Category title",
               tasks: [
                 {
+                  id: uuidv4(),
                   content:
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
               ],
             },
             {
+              id: uuidv4(),
               categoryTitle: "Category title",
               tasks: [
                 {
+                  id: uuidv4(),
                   content:
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
               ],
             },
             {
+              id: uuidv4(),
               categoryTitle: "Category title",
               tasks: [
                 {
+                  id: uuidv4(),
                   content:
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
@@ -114,21 +137,26 @@ class Content extends Component {
           ],
         },
         {
+          id: uuidv4(),
           cardTitle: "Category Four",
           categories: [
             {
+              id: uuidv4(),
               categoryTitle: "Category title",
               tasks: [
                 {
+                  id: uuidv4(),
                   content:
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
               ],
             },
             {
+              id: uuidv4(),
               categoryTitle: "Category title",
               tasks: [
                 {
+                  id: uuidv4(),
                   content:
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit fuga quos ducimus excepturi commodi tempore sequi iusto.",
                 },
@@ -150,7 +178,17 @@ class Content extends Component {
 
   addCard = (event) => {
     event.preventDefault(event);
-    console.log(event.target.title.value)
+    const newCard = {
+      id: uuidv4(),
+      cardTitle: event.target.title.value,
+      categories: []
+    }
+    const newState = {
+      ...this.state,
+      cards: [...this.state.cards, newCard]
+    }
+    this.setState({...newState})
+    console.log(event.target.title.value, newState)
   }
 
   render() {
