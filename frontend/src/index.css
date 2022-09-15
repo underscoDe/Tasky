@@ -331,6 +331,13 @@ a:focus {
   outline: none;
 }
 
+button.btn.btn-add-task {
+  background: #ccc!important;
+  padding: 10px 10px !important;
+  outline: none!important;
+  border: none!important;
+}
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */

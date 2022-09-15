@@ -188,7 +188,42 @@ class Content extends Component {
       cards: [...this.state.cards, newCard]
     }
     this.setState({...newState})
-    console.log(event.target.title.value, newState)
+  }
+
+  addCategory = (event) => {
+    event.preventDefault(event);
+    const newCategory = {
+      id: uuidv4(),
+      categoryTitle: event.target.name.value,
+      tasks: []
+    }
+    const newState = {...this.state}
+    newState.cards.forEach(card => {
+      if (card.id === event.target.cardid.value) {
+        card.categories.push(newCategory)
+      }
+    })
+    this.setState({...newState})
+    console.log(event.target.name.value, event.target.cardid.value)
+  }
+
+  addTask = (event) => {
+    event.preventDefault(event);
+    const newTask = {
+      id: uuidv4(),
+      content: event.target.content.value
+    }
+    const newState = {...this.state}
+    newState.cards.forEach(card => {
+      if (card.id === event.target.cardid.value) {
+        card.categories.forEach(category => {
+          if (category.id === event.target.categoryid.value) {
+            category.tasks.push(newTask)
+          }
+        });
+      }
+    })
+    this.setState({...newState})
   }
 
   render() {
@@ -203,6 +238,8 @@ class Content extends Component {
             boardTitle={this.state.boardTitle}
             cardList={this.state.cards}
             addCard={this.addCard}
+            addCategory={this.addCategory}
+            addTask={this.addTask}
           />
         );
       } else {

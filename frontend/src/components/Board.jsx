@@ -4,7 +4,7 @@ import FormContainer from "./modals/FormContainer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-const Board = ({ boardTitle, cardList, addCard }) => {
+const Board = ({ boardTitle, cardList, addCard, addCategory, addTask }) => {
   const triggerText = <FontAwesomeIcon icon={faPlus} />;
   const classes = "collapse-icon";
   const tooltipText = "Add a new card";
@@ -14,7 +14,7 @@ const Board = ({ boardTitle, cardList, addCard }) => {
       <h3>{boardTitle}</h3>
       <div className="d-flex flex-nowrap">
         {cardList.map((card, ind) => {
-          return <BoardCard cardData={card} key={ind} />;
+          return <BoardCard addCategory={addCategory} addTask={addTask} cardData={card} key={ind} />;
         })}
         <div className="p-1">
           <FormContainer
